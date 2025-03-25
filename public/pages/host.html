@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Set character encoding and responsive viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Page title -->
+    <title>Add Product</title>
+    <!-- Link to sell-specific CSS -->
+    <link rel="stylesheet" href="/css/host.css">
+    <!-- Link to global styles -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/loading.css">
+</head>
+
+<body>
+  
+    <!-- Background styling element -->
+   
+    <header>
+        <!-- Navigation bar -->
+        <nav class="navbar">
+            <!-- Site logo -->
+            <div class="logo">AgriConnect</div>
+            <!-- Navigation links -->
+            <ul class="nav-links">
+                <li><a href="/">🏠Home</a></li>
+                <li><a href="/whichusers">🌾Farming Guide</a></li>
+                <li><a href="/whichusers">🌿Check Plant Health</a></li>
+                <li><a href="/whichusers">🛒Farmers’ Market</a></li>
+            </ul>
+            <!-- Language selection dropdown -->
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown()">Language</button>
+                <div class="dropdown-content">
+                    <a href="">English</a>
+                    <a href="">Kannada</a>
+                </div>
+            </div>
+            <!-- Sign-up button -->
+            <button class="login-btn" onclick="window.location.href='/whichusers'">Sign-up</button>
+            <!-- Hamburger menu for mobile view -->
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="form-header">
+            <h1>Sell Farm Products</h1>
+            <p>Reach buyers directly with your agricultural produce</p>
+        </div>
+
+        <form id="productForm" action="/api/products" method="POST" enctype="multipart/form-data">
+            <div class="form-grid">
+                <!-- Product Details -->
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input type="text" id="productName" name="productName" class="input-field" required>
+                </div>
+
+                <!-- Price Section -->
+                <div class="form-group">
+                    <label for="productPrice">Price</label>
+                    <div class="input-group">
+                        <input type="number" id="productPrice" name="productPrice" class="input-field" step="0.01"
+                            required>
+                        <div class="unit-toggle">
+                            <button type="button" class="toggle-btn active" data-unit="₹">₹ Rupees</button>
+                            <button type="button" class="toggle-btn" data-unit="$">$ USD</button>
+                        </div>
+                    </div>
+                    <!-- Hidden input to store price currency -->
+                    <input type="hidden" id="priceCurrency" name="priceCurrency" value="₹">
+                </div>
+
+                <!-- Quantity Section -->
+                <!-- <div class="form-group">
+                    <label for="productQuantity">Quantity</label>
+                    <div class="input-group">
+                        <input type="number" id="productQuantity" name="productQuantity" class="input-field" step="0.01"
+                            required>
+                        <div class="unit-toggle">
+                            <button type="button" class="toggle-btn active" data-unit="kilogram">Kilograms</button>
+                            <button type="button" class="toggle-btn" data-unit="gram">Grams</button>
+                        </div>
+                    </div> -->
+                    <!-- Hidden input to store quantity unit -->
+                    <!-- <input type="hidden" id="quantityUnit" name="quantityUnit" value="kilogram">
+                </div> -->
+
+                <!-- Quality Selector -->
+                <div class="form-group">
+                    <label for="productQuality">Quality Grade</label>
+                    <select id="productQuality" name="productQuality" class="input-field" required>
+                        <option value="Premium">Premium Grade</option>
+                        <option value="Standard">Standard Grade</option>
+                        <option value="Economy">Economy Grade</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Image Upload Section -->
+            <div class="form-group">
+                <label>Add Product Photos</label>
+                <div class="image-source">
+                    <div class="source-btn active" data-source="gallery">📁 From Gallery</div>
+                    <div class="source-btn" data-source="camera">📸 Take Photo</div>
+                </div>
+                <input type="file" id="productImage" name="productImage" class="input-field" accept="image/*" multiple
+                    style="margin-top: 1rem;" required>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="form-group">
+                <label for="productDescription">Product Description</label>
+                <textarea id="productDescription" name="productDescription" class="input-field" rows="4"
+                    placeholder="Describe your product..." required></textarea>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="form-group">
+                <label for="contactNumber">Contact Number</label>
+                <input type="tel" id="contactNumber" name="contactNumber" class="input-field" required>
+            </div>
+
+            <button type="submit" class="submit-btn">List Product →</button>
+        </form>
+    </div>
+
+    <!-- Footer section -->
+    <footer class="footer">
+        <p>&copy; 2025 AgriConnect. All rights reserved.</p>
+    </footer>
+
+    <!-- External JavaScript files -->
+    <script type="text/javascript" src="/js/script.js"></script>
+    <script type="text/javascript" src="/js/loading.js"></script>
+    <script>
+        // Toggle Button Logic for Price and Quantity
+        document.querySelectorAll('.unit-toggle').forEach(group => {
+            group.querySelectorAll('.toggle-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from siblings and add to clicked button
+                    group.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    // Update corresponding hidden input based on the group context
+                    const formGroup = button.closest('.form-group');
+                    if (formGroup.querySelector('#productPrice')) {
+                        // Price unit toggle
+                        document.getElementById('priceCurrency').value = button.dataset.unit;
+                    } 
+                });
+            });
+        });
+
+        // Image Source Selection Logic
+        document.querySelectorAll('.source-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active from all source buttons and add to clicked one
+                document.querySelectorAll('.source-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Update file input capture attribute based on source selection
+                const fileInput = document.getElementById('productImage');
+                if (btn.dataset.source === 'camera') {
+                    fileInput.setAttribute('capture', 'environment');
+                } else {
+                    fileInput.removeAttribute('capture');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

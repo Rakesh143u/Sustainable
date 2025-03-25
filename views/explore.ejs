@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Explore Sustainable Stays</title>
+  <link rel="stylesheet" href="/css/explore.css">
+</head>
+<body>
+  <header>
+    <h1>Explore Sustainable Stays</h1>
+    <nav>
+      <a href="/index">Home</a>
+      <a href="/host">Host</a>
+      <a href="/login">Login</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2 class="section-title">Discover Eco-Friendly Destinations</h2>
+    <div class="card-container">
+      <% details.forEach(function(item) { %>
+        <div class="card">
+          <% if(item.image) { %>
+            <img src="<%= item.image %>" alt="<%= item.title %> image">
+          <% } else { %>
+            <img src="/images/default.jpg" alt="Default image">
+          <% } %>
+          <div class="card-content">
+            <h3><%= item.title %></h3>
+            <p><strong>Location:</strong> <%= item.location %></p>
+            <p><%= item.description %></p>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 EcoStay. All rights reserved.</p>
+  </footer>
+</body>
+</html>

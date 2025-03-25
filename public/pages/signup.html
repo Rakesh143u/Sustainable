@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - Sustainable Tourism</title>
+  <link rel="stylesheet" href="css/singup.css" />
+</head>
+<body>
+
+  <div class="page-center">
+    <div class="container">
+      <div class="heading">Sign Up</div>
+
+      <form id="signup-form" class="form" action="/signup" method="post">
+        <input class="input" type="text" name="name" placeholder="Full Name" required />
+        <input class="input" type="email" name="email" placeholder="Email" required />
+        <input class="input" type="tel" name="mobile" placeholder="Mobile Number" required pattern="[0-9]{10}" />
+        <input class="input" type="password" name="password" placeholder="Password" required />
+
+        <button type="submit" class="login-button">Sign Up</button>
+      </form>
+
+      <div class="social-account-container">
+        <span class="title">Or sign up with</span>
+        <div class="social-accounts">
+          <button type="button" class="social-button">
+           
+          <svg class="svg" viewBox="0 0 48 48" width="24" height="24">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.07 1.53 7.47 2.81l5.52-5.52C33.73 3.98 29.27 2 24 2 14.92 2 7.3 7.74 4.28 15.09l6.89 5.35C12.46 14.37 17.76 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.1 24.5c0-1.67-.14-2.91-.44-4.18H24v7.9h12.47c-.51 2.7-2.4 6.3-6.9 8.8l-.06.39 7.9 6.13.55.06C42.93 39.5 46.1 32.93 46.1 24.5z"/>
+          
+          
+          <!-- Insert SVG icon here -->
+          
+        </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="agreement">
+        <a href="/login">Already have an account? Login</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional: Firebase Signup JS -->
+  <script src="js/auth.js"></script>
+</body>
+</html>
