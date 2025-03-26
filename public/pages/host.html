@@ -22,13 +22,12 @@
         <!-- Navigation bar -->
         <nav class="navbar">
             <!-- Site logo -->
-            <div class="logo">AgriConnect</div>
+            <div class="logo">Sustainable Tourism</div>
             <!-- Navigation links -->
             <ul class="nav-links">
-                <li><a href="/">🏠Home</a></li>
-                <li><a href="/whichusers">🌾Farming Guide</a></li>
-                <li><a href="/whichusers">🌿Check Plant Health</a></li>
-                <li><a href="/whichusers">🛒Farmers’ Market</a></li>
+                <li><a href="/index">🏠Home</a></li>
+                <li><a href="/explore">🔍Explore</a></li>
+                
             </ul>
             <!-- Language selection dropdown -->
             <div class="dropdown">
@@ -39,7 +38,7 @@
                 </div>
             </div>
             <!-- Sign-up button -->
-            <button class="login-btn" onclick="window.location.href='/whichusers'">Sign-up</button>
+            <button class="login-btn" onclick="window.location.href='/signup'">Sign-up</button>
             <!-- Hamburger menu for mobile view -->
             <div class="hamburger">
                 <span class="bar"></span>
@@ -51,15 +50,15 @@
 
     <div class="container">
         <div class="form-header">
-            <h1>Sell Farm Products</h1>
-            <p>Reach buyers directly with your agricultural produce</p>
+            <h1>Stay details</h1>
+            <p>Connect your stay Globally</p>
         </div>
 
         <form id="productForm" action="/api/products" method="POST" enctype="multipart/form-data">
             <div class="form-grid">
                 <!-- Product Details -->
                 <div class="form-group">
-                    <label for="productName">Product Name</label>
+                    <label for="productName">Name</label>
                     <input type="text" id="productName" name="productName" class="input-field" required>
                 </div>
 
@@ -106,7 +105,7 @@
 
             <!-- Image Upload Section -->
             <div class="form-group">
-                <label>Add Product Photos</label>
+                <label>Add Stay Photos</label>
                 <div class="image-source">
                     <div class="source-btn active" data-source="gallery">📁 From Gallery</div>
                     <div class="source-btn" data-source="camera">📸 Take Photo</div>
@@ -117,7 +116,7 @@
 
             <!-- Additional Info -->
             <div class="form-group">
-                <label for="productDescription">Product Description</label>
+                <label for="productDescription">Stay Description</label>
                 <textarea id="productDescription" name="productDescription" class="input-field" rows="4"
                     placeholder="Describe your product..." required></textarea>
             </div>
@@ -128,13 +127,13 @@
                 <input type="tel" id="contactNumber" name="contactNumber" class="input-field" required>
             </div>
 
-            <button type="submit" class="submit-btn">List Product →</button>
+            <button type="submit" class="submit-btn">List Stay →</button>
         </form>
     </div>
 
     <!-- Footer section -->
     <footer class="footer">
-        <p>&copy; 2025 AgriConnect. All rights reserved.</p>
+        <p>&copy; 2025 Sustainable Tourism. All rights reserved.</p>
     </footer>
 
     <!-- External JavaScript files -->
